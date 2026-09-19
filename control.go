@@ -84,7 +84,7 @@ func (l *Logger) LevelHTTPHandler() http.Handler {
 
 // ListenLevelHTTP starts a dedicated HTTP server for LevelHTTPHandler on addr.
 // Empty addr defaults to 127.0.0.1:0 (ephemeral port). Returns the bound address
-// and a shutdown function. The server also shuts down when ctx is cancelled.
+// and a shutdown function. The server also shuts down when ctx is canceled.
 func (l *Logger) ListenLevelHTTP(ctx context.Context, addr string) (actualAddr string, shutdown func(context.Context) error, err error) {
 	if addr == "" {
 		addr = "127.0.0.1:0"
@@ -101,7 +101,8 @@ func (l *Logger) ListenLevelHTTP(ctx context.Context, addr string) (actualAddr s
 	go func() { _ = srv.Serve(ln) }()
 	go func() {
 		<-ctx.Done()
-		shCtx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
+		// Parent is already done; WithoutCancel keeps values while allowing a fresh timeout.
+		shCtx, cancel := context.WithTimeout(context.WithoutCancel(ctx), 3*time.Second)
 		defer cancel()
 		_ = srv.Shutdown(shCtx)
 	}()
@@ -109,7 +110,7 @@ func (l *Logger) ListenLevelHTTP(ctx context.Context, addr string) (actualAddr s
 }
 
 // WatchLevelEnv polls an environment variable and applies level changes.
-// Stops when ctx is cancelled. Empty envKey defaults to LOG_LEVEL;
+// Stops when ctx is canceled. Empty envKey defaults to LOG_LEVEL;
 // empty interval defaults to 2s.
 func (l *Logger) WatchLevelEnv(ctx context.Context, envKey string, interval time.Duration) {
 	if envKey == "" {
