@@ -5,7 +5,7 @@ import (
 	"context"
 	"log/slog"
 
-	"github.com/glaciforge/slogx"
+	"github.com/zorneth/slogx"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/sdk/trace"
 )

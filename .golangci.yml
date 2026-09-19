@@ -60,4 +60,4 @@ formatters:
   settings:
     goimports:
       local-prefixes:
-        - github.com/glaciforge/slogx
+        - github.com/zorneth/slogx

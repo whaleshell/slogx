@@ -4,7 +4,7 @@ package main
 import (
 	"context"
 
-	"github.com/glaciforge/slogx"
+	"github.com/zorneth/slogx"
 )
 
 type CreateUserRequest struct {

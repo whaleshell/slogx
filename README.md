@@ -1,7 +1,7 @@
 # slogx
 
-[![CI](https://github.com/glaciforge/slogx/actions/workflows/ci.yml/badge.svg)](https://github.com/glaciforge/slogx/actions/workflows/ci.yml)
-[![Go Reference](https://pkg.go.dev/badge/github.com/glaciforge/slogx.svg)](https://pkg.go.dev/github.com/glaciforge/slogx)
+[![CI](https://github.com/zorneth/slogx/actions/workflows/ci.yml/badge.svg)](https://github.com/zorneth/slogx/actions/workflows/ci.yml)
+[![Go Reference](https://pkg.go.dev/badge/github.com/zorneth/slogx.svg)](https://pkg.go.dev/github.com/zorneth/slogx)
 [![Go 1.27+](https://img.shields.io/badge/Go-1.27+-blue)](https://go.dev/dl/)
 
 Enterprise-grade structured logging for Go, built on [`log/slog`](https://pkg.go.dev/log/slog).
@@ -22,7 +22,7 @@ plus high-performance object dumping via [`saferefl`](https://github.com/lkmavi/
 ## Install
 
 ```bash
-go get github.com/glaciforge/slogx
+go get github.com/zorneth/slogx
 ```
 
 ## Quick start
@@ -34,7 +34,7 @@ import (
     "context"
     "log/slog"
 
-    "github.com/glaciforge/slogx"
+    "github.com/zorneth/slogx"
 )
 
 func main() {

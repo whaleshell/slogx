@@ -1,4 +1,4 @@
-module github.com/glaciforge/slogx
+module github.com/zorneth/slogx
 
 go 1.27.0
 
