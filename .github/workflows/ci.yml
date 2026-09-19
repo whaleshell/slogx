@@ -1,7 +1,7 @@
 name: CI
 
 # CI strategy adapted from glaciforge/saferefl for slogx:
-# - Go version matrix: 1.23 (floor), stable
+# - Go version matrix: 1.27 (floor), stable
 # - Tests run with race detector
 # - Examples are built but excluded from coverage
 # - Coverage uploaded via Codecov OIDC when available
@@ -27,7 +27,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        go-version: ['1.23.x', 'stable']
+        go-version: ['1.27.x', 'stable']
 
     steps:
       - uses: actions/checkout@v4
@@ -54,7 +54,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        go-version: ['1.23.x', 'stable']
+        go-version: ['1.27.x', 'stable']
 
     steps:
       - uses: actions/checkout@v4

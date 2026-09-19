@@ -202,12 +202,12 @@ func (m *CorporateMasker) Mask(value any, mType MaskType) any {
 }
 
 var (
-	reAWSKey    = regexp.MustCompile(`\b(AKIA|ASIA)[0-9A-Z]{16}\b`)
-	rePEM       = regexp.MustCompile(`-----BEGIN [A-Z ]*PRIVATE KEY-----`)
-	reBearer    = regexp.MustCompile(`(?i)^bearer\s+\S+`)
-	reJWT       = regexp.MustCompile(`^[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+$`)
-	reIBAN      = regexp.MustCompile(`(?i)\b[A-Z]{2}[0-9]{2}[A-Z0-9]{10,30}\b`)
-	reCardLike  = regexp.MustCompile(`\b(?:\d[ -]*?){13,19}\b`)
+	reAWSKey   = regexp.MustCompile(`\b(AKIA|ASIA)[0-9A-Z]{16}\b`)
+	rePEM      = regexp.MustCompile(`-----BEGIN [A-Z ]*PRIVATE KEY-----`)
+	reBearer   = regexp.MustCompile(`(?i)^bearer\s+\S+`)
+	reJWT      = regexp.MustCompile(`^[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+$`)
+	reIBAN     = regexp.MustCompile(`(?i)\b[A-Z]{2}[0-9]{2}[A-Z0-9]{10,30}\b`)
+	reCardLike = regexp.MustCompile(`\b(?:\d[ -]*?){13,19}\b`)
 )
 
 func detectSecret(s string) (MaskType, bool) {
