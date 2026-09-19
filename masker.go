@@ -221,7 +221,7 @@ func detectSecret(s string) (MaskType, bool) {
 	if reBearer.MatchString(s) {
 		return MaskToken, true
 	}
-	if reJWT.MatchString(s) {
+	if reJWT.MatchString(s) && looksLikeJWT(s) {
 		return MaskJWT, true
 	}
 	if reAWSKey.MatchString(s) {
@@ -234,6 +234,21 @@ func detectSecret(s string) (MaskType, bool) {
 		return MaskCard, true
 	}
 	return 0, false
+}
+
+// looksLikeJWT reduces false positives for dotted identifiers (e.g. op=
+// "cli.policy.check" / "mysql.AnalyticsStorage.TeamSummaries"). Real JWTs
+// encode a JSON header, so the first segment is base64url starting with "eyJ".
+func looksLikeJWT(s string) bool {
+	parts := strings.Split(s, ".")
+	if len(parts) != 3 {
+		return false
+	}
+	// Minimum lengths: tiny dotted labels are never JWTs.
+	if len(parts[0]) < 8 || len(parts[1]) < 8 || len(parts[2]) < 8 {
+		return false
+	}
+	return strings.HasPrefix(parts[0], "eyJ")
 }
 
 func maskEmail(s string) string {

@@ -26,6 +26,14 @@ func TestCorporateDetect(t *testing.T) {
 	m := &CorporateMasker{Fingerprint: false}
 	assert.Contains(t, fmt.Sprint(m.Mask("AKIAIOSFODNN7EXAMPLE", MaskDefault)), "TOKEN")
 	assert.Contains(t, fmt.Sprint(m.Mask("eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIn0.signature", MaskDefault)), "JWT")
+
+	// Dotted op names must not auto-detect as JWT (handler only masks on detect hit).
+	_, hit := detectSecret("cli.policy.check")
+	assert.False(t, hit)
+	_, hit = detectSecret("mysql.AnalyticsStorage.TeamSummaries")
+	assert.False(t, hit)
+	_, hit = detectSecret("gateway.sandboxes.upsert")
+	assert.False(t, hit)
 }
 
 func TestLookupMaskSuffix(t *testing.T) {
