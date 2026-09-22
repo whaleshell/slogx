@@ -1,4 +1,4 @@
-module github.com/zorneth/slogx
+module github.com/whaleshell/slogx
 
 go 1.27.0
 

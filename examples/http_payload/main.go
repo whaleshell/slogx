@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/zorneth/slogx"
+	"github.com/whaleshell/slogx"
 )
 
 func main() {

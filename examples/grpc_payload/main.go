@@ -4,7 +4,7 @@ package main
 import (
 	"context"
 
-	"github.com/zorneth/slogx"
+	"github.com/whaleshell/slogx"
 )
 
 type CreateUserRequest struct {

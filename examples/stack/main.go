@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"log/slog"
 
-	"github.com/zorneth/slogx"
+	"github.com/whaleshell/slogx"
 )
 
 func main() {
